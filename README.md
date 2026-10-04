@@ -23,6 +23,75 @@ It contains:
   up as it runs; timeframes without enough recorded bars show
   LIVE DATA UNAVAILABLE and force NO TRADE. No futures data is used.
 
+## Using the .exe — quick guide
+
+### Get the latest Stragis.exe
+
+1. Open the repo on GitHub → **Actions** tab → **Build Windows EXE**
+   (left sidebar) → click the **newest run at the top** (check its
+   commit message matches the latest change).
+2. Scroll to **Artifacts** at the bottom of the run page and download
+   **Stragis-exe** (a zip).
+3. Unzip it, **delete any older `Stragis.exe` first**, then put the new
+   `Stragis.exe` wherever you keep it (Desktop is fine) and double-click.
+4. First launch only: Windows SmartScreen may say “Windows protected
+   your PC” → **More info → Run anyway**. The app is not code-signed;
+   this prompt is expected for a self-built app.
+
+There is nothing to install and no commands to run — the portable .exe
+contains the whole app (UI + local server + database engine).
+
+### Updating to a new version is safe
+
+Replacing `Stragis.exe` with a newer one **does not erase your data**.
+Your watchlist, alerts, settings and the gold spot ticks the app has
+recorded live in a separate file:
+
+```text
+%APPDATA%\Stragis\stragis.db
+```
+
+To back up your data, copy that one file somewhere safe. To reset the
+app completely, close Stragis and delete that file (it is recreated
+empty on next launch).
+
+### What you should see
+
+- **Crypto dashboard** shows a green **LIVE** badge and updates every
+  ~30 seconds. Under the chart, the source line tells you which feed is
+  serving you: **Binance (primary)** normally, **Kraken (fallback)** if
+  Binance is unreachable on your network — both are working states.
+  The chart has true per-timeframe candles (1m–1w) and a volume
+  histogram underneath it.
+- **GOLD ONLY tab**: leave the app open on this tab while the gold
+  market is open (from Monday). The spot history/candles are built from
+  ticks the app records itself, so structure and setups become
+  available as bars accumulate. On weekends it honestly shows the last
+  spot quote / no-trade state rather than inventing data.
+
+### Troubleshooting
+
+- **Red OFFLINE / “LIVE DATA UNAVAILABLE” banner** — the app could not
+  reach any data provider. Check your internet connection, then click
+  **Retry** in the banner. If it persists, allow `Stragis.exe` in
+  *Windows Security → Firewall & network protection → Allow an app
+  through firewall* (Private). The app never shows invented prices —
+  the banner means “no live data”, not a crash.
+- **Data “sometimes stops” and comes back** — that was the old
+  CoinGecko-only build hitting the free rate limit (~10 calls/min).
+  The current build fetches prices/candles from Binance/Kraken and
+  caches CoinGecko metadata, with automatic retries, so refresh stalls
+  should no longer happen.
+- **App window does not open / instant error dialog** — make sure you
+  are running the newest .exe (delete older copies so you don't launch
+  one by accident). The original broken build (pre-fix) showed a
+  `spawn ... ENOENT` JavaScript error; that was fixed — if you ever see
+  it, you are running an old file.
+- **Which version am I running?** The source line under the crypto
+  chart (Binance/Kraken/CoinGecko label) only exists in the current
+  build — if your chart still says “Candles: CoinGecko OHLC”, you are
+  on the old .exe.
+
 ## How it works (architecture)
 
 | Piece | Replacement for the Hatch SDK |
@@ -90,12 +159,14 @@ The portable `.exe` lands in `dist-exe\`.
 
 ### How the desktop app runs
 
-Electron (`electron/main.cjs`) starts the same bundled server in-process
-as a child process (Electron's Node runtime), pointed at a database in
-your per-user app data folder (`%APPDATA%\Stragis\stragis.db`), waits for
-it to answer, then opens the app window at the local address. Your data
-persists between launches and survives app updates. An internet
-connection is still required for the live market feeds.
+Electron (`electron/main.cjs`) loads the same bundled server
+**in-process** (no child process — spawning the portable `.exe` as a
+child was the cause of the original `spawn ... ENOENT` startup crash,
+fixed in commit `52b45bc`), pointed at a database in your per-user app
+data folder (`%APPDATA%\Stragis\stragis.db`), waits for it to answer,
+then opens the app window at the local address. Your data persists
+between launches and survives app updates. An internet connection is
+still required for the live market feeds.
 
 ### Windows SmartScreen
 
