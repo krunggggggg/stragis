@@ -1,1 +1,126 @@
-IyBTdHJhZ2lzIOKAlCBTdGFuZGFsb25lICsgRGVza3RvcCAoLmV4ZSkKCioqU3RyYWdpcyDigJQgVW5kZXJzdGFuZCB0aGUgVHJlbmQuIFRyYWRlIFdpdGggYSBQbGFuLioqCgpUaGlzIGlzIHRoZSBzdGFuZGFsb25lIHZlcnNpb24gb2YgU3RyYWdpcywgY29udmVydGVkIGZyb20gdGhlIE11c2UKd2ViIGFydGlmYWN0IHNvIGl0IHJ1bnMgb24gYSBub3JtYWwgUEMgd2l0aCBvbmx5IHN0YW5kYXJkIG9wZW4tc291cmNlCmRlcGVuZGVuY2llcyDigJQgbm8gYEBoYXRjaC9zcGFjZS1zZGtgIGFueXdoZXJlLiBUaGUgb3JpZ2luYWwgd2ViIHZlcnNpb24gaXMKdW50b3VjaGVkOyB0aGUgY29udmVyc2lvbiBsaXZlcyBlbnRpcmVseSBpbiB0aGlzIGZvbGRlci4KCkl0IGNvbnRhaW5zOgoKLSAqKkNyeXB0byBkYXNoYm9hcmQqKiDigJQgbGl2ZSBwcmljZXMgYW5kIHRydWUgcGVyLWludGVydmFsIE9ITENWIGNhbmRsZXMgZnJvbQogIEJpbmFuY2UgKHByaW1hcnkpIHdpdGggYXV0b21hdGljIEtyYWtlbiBmYWxsYmFjazsgQ29pbkdlY2tvIHN1cHBsaWVzCiAgbWFya2V0LWNhcCByYW5raW5ncy9zZWFyY2ggYmVoaW5kIGEgc2VydmVyIGNhY2hlICg2MHMgbWFya2V0cywgNW1pbgogIG1ldGFkYXRhKSB3aXRoIHJldHJ5L2JhY2tvZmYuIENhbmRsZXN0aWNrIGNoYXJ0cyB3aXRoCiAgRU1BL0JvbGxpbmdlciwgUlNJIGFuZCBNQUNELCBtdWx0aS1mYWN0b3IgQlVZIC8gU0VMTCAvIFdBSVQgc2lnbmFscywKICB3YXRjaGxpc3QsIGFsZXJ0cywgYW5kIGEgcmlzayBjYWxjdWxhdG9yLiBTaG93cyAqKkxJVkUgREFUQSBVTkFWQUlMQUJMRSoqCiAgaW5zdGVhZCBvZiBmYWtlIHByaWNlcyB3aGVuIGEgZmVlZCBmYWlscy4KLSAqKkdPTEQgT05MWSDigJQgWEFVL1VTRCoqIOKAlCBzZXBhcmF0ZSBzZWN0aW9uOiBINC9IMSBzdHJ1Y3R1cmUsIE0xNSBzZXR1cCwKICBNNSBjb25maXJtYXRpb24sIGxpcXVpZGl0eSAvIFBESCAvIFBETCwgbmV3cyBmaWx0ZXIsIHNldHVwIHNjb3JlIC8xMDAuCiAgUHVyZSBzcG90IFhBVS9VU0Qgb25seSAoU3dpc3NxdW90ZSBzcG90IGZlZWQpLiBTcG90IGNhbmRsZXMgYXJlCiAgYWdncmVnYXRlZCBmcm9tIHNwb3QgdGlja3MgdGhpcyBhcHAgcmVjb3JkcyBpdHNlbGYsIHNvIGhpc3RvcnkgYnVpbGRzCiAgdXAgYXMgaXQgcnVuczsgdGltZWZyYW1lcyB3aXRob3V0IGVub3VnaCByZWNvcmRlZCBiYXJzIHNob3cKICBMSVZFIERBVEEgVU5BVkFJTEFCTEUgYW5kIGZvcmNlIE5PIFRSQURFLiBObyBmdXR1cmVzIGRhdGEgaXMgdXNlZC4KCiMjIEhvdyBpdCB3b3JrcyAoYXJjaGl0ZWN0dXJlKQoKfCBQaWVjZSB8IFJlcGxhY2VtZW50IGZvciB0aGUgSGF0Y2ggU0RLIHwKfC0tLXwtLS18CnwgYHNlcnZlci9zcmMvc2RrLXNoaW0udHNgIHwgYGRlZmluZUFjdGlvbmAgLyBgemAgLyBgQWN0aW9uc01vZHVsZWAg4oCUIHRoaW4gd3JhcHBlciBvdmVyIHRoZSByZWFsIGB6b2RgIHBhY2thZ2U7IGBhY3Rpb25zLnRzYCBsb2dpYyBpcyB1bmNoYW5nZWQgYXBhcnQgZnJvbSBpdHMgaW1wb3J0IGxpbmUgfAp8IGBzZXJ2ZXIvc3JjL3NlcnZlci50c2AgfCBQbGFpbiBOb2RlIEhUVFAgc2VydmVyOiBgUE9TVCAvYWN0aW9uc2AgKGB7YWN0aW9uLCBhcmdzfWAsIGFyZ3MgdmFsaWRhdGVkIHdpdGggZWFjaCBhY3Rpb24ncyB6b2QgcmVxdWVzdCBzY2hlbWEpICsgc3RhdGljIHNlcnZpbmcgb2YgdGhlIGJ1aWx0IGNsaWVudCB3aXRoIFNQQSBmYWxsYmFjayB8CnwgYHNlcnZlci9zcmMvZGIudHNgIHwgYGN0eC5kYmAg4oCUIGRyaXp6bGUtb3JtIG92ZXIgKipiZXR0ZXItc3FsaXRlMyoqOyB0aGUgU1FMIG1pZ3JhdGlvbnMgaW4gYGRyaXp6bGUvYCBydW4gYXQgc3RhcnR1cCAodHJhY2tlZCBpbiBhIGBfc3RyYWdpc19taWdyYXRpb25zYCB0YWJsZSwgc28gcmVzdGFydHMgYXJlIHNhZmUpIHwKfCBgY2xpZW50L3NyYy9hcGkudHNgIHwgVHlwZWQgYGZldGNoYCBQcm94eSBjbGllbnQgKHdhcyBgY3JlYXRlQWN0aW9uQ2xpZW50YCkgfAp8IGBjbGllbnQvc3JjL21haW4udHN4YCB8IFBsYWluIGBuZXcgUXVlcnlDbGllbnQoKWAgKHdhcyB0aGUgU0RLJ3Mgc2hhcmVkIGNsaWVudCkgfAp8IGB2aXRlLmNvbmZpZy50c2AgfCBWaXRlICsgYEB2aXRlanMvcGx1Z2luLXJlYWN0YCArIGBAdGFpbHdpbmRjc3Mvdml0ZWAgKFRhaWx3aW5kIHY0LCBhcyBpbiB0aGUgb3JpZ2luYWwpIHJlcGxhY2VzIHRoZSBTREsgYnVuZGxlciB8CgoqKlNlcnZlciBydW50aW1lIGRlY2lzaW9uOioqIHRoZSBwcm9kdWN0aW9uIHNlcnZlciBpcyBidW5kbGVkIGJ5IGVzYnVpbGQKaW50byBhIHNpbmdsZSBFU00gZmlsZSAoYHNlcnZlci9kaXN0L3NlcnZlci5tanNgKSBhbmQgcnVucyB1bmRlcgoqKnBsYWluIE5vZGUgMjArKiouIGJldHRlci1zcWxpdGUzIHdhcyBjaG9zZW4gb3ZlciBgbm9kZTpzcWxpdGVgIGJlY2F1c2UKZHJpenpsZS1vcm0gaGFzIGEgbWF0dXJlLCBzdGFibGUgYmV0dGVyLXNxbGl0ZTMgZHJpdmVyLCBhbmQKZWxlY3Ryb24tYnVpbGRlciByZWJ1aWxkcyB0aGUgbmF0aXZlIG1vZHVsZSBmb3IgRWxlY3Ryb24ncyBBQkkKYXV0b21hdGljYWxseSAoYG5wbVJlYnVpbGRgKS4gYGN0eC5pbnZhbGlkYXRlUXVlcmllcygpYCBpcyBhIG5vLW9wIOKAlAp0aGUgUmVhY3QgY2xpZW50IGFscmVhZHkgaW52YWxpZGF0ZXMgaXRzIG93biBxdWVyaWVzIGFmdGVyIG11dGF0aW9ucy4KCiMjIFJ1biBpdCBsb2NhbGx5ICh3ZWIgdmVyc2lvbikKClByZXJlcXVpc2l0ZXM6IE5vZGUuanMgMjArICgyMiByZWNvbW1lbmRlZCkgYW5kIG5wbS4KCmBgYGJhc2gKbnBtIGluc3RhbGwKbnBtIHJ1biBidWlsZCAgICAgIyBidWlsZHMgY2xpZW50IChWaXRlKSArIHNlcnZlciAoZXNidWlsZCkKbnBtIHN0YXJ0ICAgICAgICAgIyBzZXJ2ZXMgZXZlcnl0aGluZyBvbiBodHRwOi8vMTI3LjAuMC4xOjQzMTcKYGBgCgpUaGVuIG9wZW4gPGh0dHA6Ly8xMjcuMC4wLjE6NDMxNz4uCgpVc2VmdWwgdmFyaWF0aW9uczoKCi0gYFBPUlQ9ODA4MCBucG0gc3RhcnRgIOKAlCBjaGFuZ2UgdGhlIHBvcnQuCi0gYFNUUkFHSVNfREJfUEFUSD0vcGF0aC90by9zdHJhZ2lzLmRiIG5wbSBzdGFydGAg4oCUIGNoYW5nZSB3aGVyZSB0aGUKICBTUUxpdGUgZGF0YWJhc2UgbGl2ZXMgKGRlZmF1bHQ6IGAuL2RhdGEvc3RyYWdpcy5kYmApLiBZb3VyIHdhdGNobGlzdCwKICBhbGVydHMsIGFuZCByZWNvcmRlZCBnb2xkIHRpY2tzIGxpdmUgaW4gdGhhdCBmaWxlIOKAlCBiYWNrIGl0IHVwIHRvIGtlZXAKICB5b3VyIGRhdGEuCi0gYG5wbSBydW4gZGV2YCDigJQgYnVpbGQgb25jZSBhbmQgc3RhcnQgKHNhbWUgYXMgYWJvdmUpLgotIGBucG0gcnVuIGRldjpjbGllbnRgIOKAlCBWaXRlIGRldiBzZXJ2ZXIgb24gOjUxNzMgd2l0aCBgL2FjdGlvbnNgCiAgcHJveGllZCB0byBhIHNlcGFyYXRlbHkgcnVubmluZyBzZXJ2ZXIgb24gOjQzMTcuCi0gYG5wbSBydW4gdHlwZWNoZWNrYCDigJQgc2VlIHRoZSBrbm93biBwcmUtZXhpc3RpbmcgZXJyb3JzIGJlbG93LgoKTm8gQVBJIGtleXMgYXJlIG5lZWRlZDogQmluYW5jZS9LcmFrZW4gcHVibGljIG1hcmtldCBkYXRhLCBDb2luR2Vja28gKGZyZWUgdGllciksIFN3aXNzcXVvdGUgc3BvdCwgR29sZC1BUEksCmFuZCB0aGUgRm9yZXhGYWN0b3J5IGNhbGVuZGFyIGZlZWQgdXNlZCBieSB0aGUgYXBwIGFyZSBhbGwga2V5bGVzcy4KCiMjIEJ1aWxkIHRoZSBXaW5kb3dzIGRlc2t0b3AgYXBwICguZXhlKQoKIyMjIE9wdGlvbiBBIOKAlCBHaXRIdWIgQWN0aW9ucyAocmVjb21tZW5kZWQsIG5vdGhpbmcgdG8gaW5zdGFsbCkKClRoaXMgcmVwbyBoYXMgYC5naXRodWIvd29ya2Zsb3dzL2J1aWxkLXdpbmRvd3MtZXhlLnltbGAuIFB1c2ggdG8gdGhlCmBmZWF0dXJlL2Rlc2t0b3AtZXhlYCBicmFuY2ggKG9yIHJ1biB0aGUgd29ya2Zsb3cgbWFudWFsbHkgZnJvbSB0aGUKQWN0aW9ucyB0YWIpLCB0aGVuIGRvd25sb2FkICoqU3RyYWdpcy1leGUqKiBmcm9tIHRoZSB3b3JrZmxvdyBydW4ncwphcnRpZmFjdHMg4oCUIGl0IGNvbnRhaW5zIGEgcG9ydGFibGUgYFN0cmFnaXMuZXhlYC4gRG91YmxlLWNsaWNrIGl0OiBubwppbnN0YWxsYXRpb24gbmVlZGVkLgoKIyMjIE9wdGlvbiBCIOKAlCBCdWlsZCBvbiBhIFdpbmRvd3MgUEMKCmBgYGJhdApucG0gaW5zdGFsbApucG0gcnVuIGRpc3Q6d2luCmBgYAoKVGhlIHBvcnRhYmxlIGAuZXhlYCBsYW5kcyBpbiBgZGlzdC1leGVcYC4KCiMjIyBIb3cgdGhlIGRlc2t0b3AgYXBwIHJ1bnMKCkVsZWN0cm9uIChgZWxlY3Ryb24vbWFpbi5janNgKSBzdGFydHMgdGhlIHNhbWUgYnVuZGxlZCBzZXJ2ZXIgaW4tcHJvY2VzcwphcyBhIGNoaWxkIHByb2Nlc3MgKEVsZWN0cm9uJ3MgTm9kZSBydW50aW1lKSwgcG9pbnRlZCBhdCBhIGRhdGFiYXNlIGluCnlvdXIgcGVyLXVzZXIgYXBwIGRhdGEgZm9sZGVyIChgJUFQUERBVEElXFN0cmFnaXNcc3RyYWdpcy5kYmApLCB3YWl0cyBmb3IKaXQgdG8gYW5zd2VyLCB0aGVuIG9wZW5zIHRoZSBhcHAgd2luZG93IGF0IHRoZSBsb2NhbCBhZGRyZXNzLiBZb3VyIGRhdGEKcGVyc2lzdHMgYmV0d2VlbiBsYXVuY2hlcyBhbmQgc3Vydml2ZXMgYXBwIHVwZGF0ZXMuIEFuIGludGVybmV0CmNvbm5lY3Rpb24gaXMgc3RpbGwgcmVxdWlyZWQgZm9yIHRoZSBsaXZlIG1hcmtldCBmZWVkcy4KCiMjIyBXaW5kb3dzIFNtYXJ0U2NyZWVuCgpUaGUgYC5leGVgIGlzIG5vdCBjb2RlLXNpZ25lZCwgc28gb24gZmlyc3QgbGF1bmNoIFdpbmRvd3MgbWF5IHNob3cKKirigJxXaW5kb3dzIHByb3RlY3RlZCB5b3VyIFBD4oCdKiouIENsaWNrICoqTW9yZSBpbmZvIOKGkiBSdW4gYW55d2F5KiouIFRoaXMKaXMgbm9ybWFsIGZvciBzZWxmLWJ1aWx0IGFwcHM7IG9ubHkgYSBwYWlkIGNvZGUtc2lnbmluZyBjZXJ0aWZpY2F0ZQpyZW1vdmVzIGl0LgoKIyMgS25vd24gaXNzdWVzCgotIGBucG0gcnVuIHR5cGVjaGVja2AgcmVwb3J0cyAzICoqcHJlLWV4aXN0aW5nKiogZXJyb3JzIGluIHRoZSBvcmlnaW5hbAogIGFwcCBjb2RlIChgY2xpZW50L3NyYy9BcHAudHN4YCwgdW51c2VkIHZhcmlhYmxlcyBgeUhpZ2hgLCBgeUxvd2AsCiAgYHN1cHBvcnQyYCkuIFRoZXkgd2VyZSBwcmVzZW50IGJlZm9yZSB0aGlzIGNvbnZlcnNpb24sIGRvbid0IGFmZmVjdAogIHRoZSBidWlsZCBvciBydW50aW1lLCBhbmQgd2VyZSBkZWxpYmVyYXRlbHkgbGVmdCBhbG9uZSByYXRoZXIgdGhhbgogIHJld3JpdGluZyBhcHAgbG9naWMuIFRoZSBzZXJ2ZXIgcHJvamVjdCB0eXBlY2hlY2tzIGNsZWFubHkuCi0gSW4gdGhlIE11c2UgTGludXggc2FuZGJveCB3aGVyZSB0aGlzIHdhcyBkZXZlbG9wZWQsIHRoZSBFbGVjdHJvbgogIGJpbmFyeSBkb3dubG9hZCB3YXMgYmxvY2tlZCBieSBhIHByb3h5LCBzbyB0aGUgZnVsbCBlbGVjdHJvbi1idWlsZGVyCiAgcGFja2FnaW5nIGNvdWxkIG5vdCBiZSBjb21wbGV0ZWQgbG9jYWxseSAodGhlIGJldHRlci1zcWxpdGUzIG5hdGl2ZQogIHJlYnVpbGQgZm9yIEVsZWN0cm9uIDM3ICpkaWQqIHN1Y2NlZWQpLiBUaGUgV2luZG93cyBgLmV4ZWAgcGFja2FnaW5nCiAgaXMgZXhlcmNpc2VkIGJ5IHRoZSBHaXRIdWIgQWN0aW9ucyB3b3JrZmxvdyBpbnN0ZWFkLgoKIyMgRGlzY2xhaW1lcgoKU3RyYWdpcyBwcm92aWRlcyBtYXJrZXQgYW5hbHlzaXMgYW5kIGVkdWNhdGlvbmFsIGluZm9ybWF0aW9uIGJhc2VkIG9uCmF2YWlsYWJsZSBtYXJrZXQgZGF0YS4gVHJhZGluZyBjcnlwdG9jdXJyZW5jeSBhbmQgZ29sZCBpbnZvbHZlcwpzdWJzdGFudGlhbCByaXNrLCBhbmQgcGFzdCBwZXJmb3JtYW5jZSBkb2VzIG5vdCBndWFyYW50ZWUgZnV0dXJlIHJlc3VsdHMuClNpZ25hbHMgYXJlIG5vdCBndWFyYW50ZWVkIHByZWRpY3Rpb25zIG9yIGZpbmFuY2lhbCBhZHZpY2UuIEFsd2F5cwpjb25kdWN0IHlvdXIgb3duIHJlc2VhcmNoIGFuZCBjb25zaWRlciB5b3VyIHJpc2sgdG9sZXJhbmNlLgo=
+# Stragis — Standalone + Desktop (.exe)
+
+**Stragis — Understand the Trend. Trade With a Plan.**
+
+This is the standalone version of Stragis, converted from the Muse
+web artifact so it runs on a normal PC with only standard open-source
+dependencies — no `@hatch/space-sdk` anywhere. The original web version is
+untouched; the conversion lives entirely in this folder.
+
+It contains:
+
+- **Crypto dashboard** — live prices and true per-interval OHLCV candles from
+  Binance (primary) with automatic Kraken fallback; CoinGecko supplies
+  market-cap rankings/search behind a server cache (60s markets, 5min
+  metadata) with retry/backoff. Candlestick charts with
+  EMA/Bollinger, RSI and MACD, multi-factor BUY / SELL / WAIT signals,
+  watchlist, alerts, and a risk calculator. Shows **LIVE DATA UNAVAILABLE**
+  instead of fake prices when a feed fails.
+- **GOLD ONLY — XAU/USD** — separate section: H4/H1 structure, M15 setup,
+  M5 confirmation, liquidity / PDH / PDL, news filter, setup score /100.
+  Pure spot XAU/USD only (Swissquote spot feed). Spot candles are
+  aggregated from spot ticks this app records itself, so history builds
+  up as it runs; timeframes without enough recorded bars show
+  LIVE DATA UNAVAILABLE and force NO TRADE. No futures data is used.
+
+## How it works (architecture)
+
+| Piece | Replacement for the Hatch SDK |
+|---|---|
+| `server/src/sdk-shim.ts` | `defineAction` / `z` / `ActionsModule` — thin wrapper over the real `zod` package; `actions.ts` logic is unchanged apart from its import line |
+| `server/src/server.ts` | Plain Node HTTP server: `POST /actions` (`{action, args}`, args validated with each action's zod request schema) + static serving of the built client with SPA fallback |
+| `server/src/db.ts` | `ctx.db` — drizzle-orm over **better-sqlite3**; the SQL migrations in `drizzle/` run at startup (tracked in a `_stragis_migrations` table, so restarts are safe) |
+| `client/src/api.ts` | Typed `fetch` Proxy client (was `createActionClient`) |
+| `client/src/main.tsx` | Plain `new QueryClient()` (was the SDK's shared client) |
+| `vite.config.ts` | Vite + `@vitejs/plugin-react` + `@tailwindcss/vite` (Tailwind v4, as in the original) replaces the SDK bundler |
+
+**Server runtime decision:** the production server is bundled by esbuild
+into a single ESM file (`server/dist/server.mjs`) and runs under
+**plain Node 20+**. better-sqlite3 was chosen over `node:sqlite` because
+drizzle-orm has a mature, stable better-sqlite3 driver, and
+electron-builder rebuilds the native module for Electron's ABI
+automatically (`npmRebuild`). `ctx.invalidateQueries()` is a no-op —
+the React client already invalidates its own queries after mutations.
+
+## Run it locally (web version)
+
+Prerequisites: Node.js 20+ (22 recommended) and npm.
+
+```bash
+npm install
+npm run build     # builds client (Vite) + server (esbuild)
+npm start         # serves everything on http://127.0.0.1:4317
+```
+
+Then open <http://127.0.0.1:4317>.
+
+Useful variations:
+
+- `PORT=8080 npm start` — change the port.
+- `STRAGIS_DB_PATH=/path/to/stragis.db npm start` — change where the
+  SQLite database lives (default: `./data/stragis.db`). Your watchlist,
+  alerts, and recorded gold ticks live in that file — back it up to keep
+  your data.
+- `npm run dev` — build once and start (same as above).
+- `npm run dev:client` — Vite dev server on :5173 with `/actions`
+  proxied to a separately running server on :4317.
+- `npm run typecheck` — see the known pre-existing errors below.
+
+No API keys are needed: Binance/Kraken public market data, CoinGecko (free tier), Swissquote spot, Gold-API,
+and the ForexFactory calendar feed used by the app are all keyless.
+
+## Build the Windows desktop app (.exe)
+
+### Option A — GitHub Actions (recommended, nothing to install)
+
+This repo has `.github/workflows/build-windows-exe.yml`. Push to the
+`feature/desktop-exe` branch (or run the workflow manually from the
+Actions tab), then download **Stragis-exe** from the workflow run's
+artifacts — it contains a portable `Stragis.exe`. Double-click it: no
+installation needed.
+
+### Option B — Build on a Windows PC
+
+```bat
+npm install
+npm run dist:win
+```
+
+The portable `.exe` lands in `dist-exe\`.
+
+### How the desktop app runs
+
+Electron (`electron/main.cjs`) starts the same bundled server in-process
+as a child process (Electron's Node runtime), pointed at a database in
+your per-user app data folder (`%APPDATA%\Stragis\stragis.db`), waits for
+it to answer, then opens the app window at the local address. Your data
+persists between launches and survives app updates. An internet
+connection is still required for the live market feeds.
+
+### Windows SmartScreen
+
+The `.exe` is not code-signed, so on first launch Windows may show
+**“Windows protected your PC”**. Click **More info → Run anyway**. This
+is normal for self-built apps; only a paid code-signing certificate
+removes it.
+
+## Known issues
+
+- `npm run typecheck` reports 3 **pre-existing** errors in the original
+  app code (`client/src/App.tsx`, unused variables `yHigh`, `yLow`,
+  `support2`). They were present before this conversion, don't affect
+  the build or runtime, and were deliberately left alone rather than
+  rewriting app logic. The server project typechecks cleanly.
+- In the Muse Linux sandbox where this was developed, the Electron
+  binary download was blocked by a proxy, so the full electron-builder
+  packaging could not be completed locally (the better-sqlite3 native
+  rebuild for Electron 37 *did* succeed). The Windows `.exe` packaging
+  is exercised by the GitHub Actions workflow instead.
+
+## Disclaimer
+
+Stragis provides market analysis and educational information based on
+available market data. Trading cryptocurrency and gold involves
+substantial risk, and past performance does not guarantee future results.
+Signals are not guaranteed predictions or financial advice. Always
+conduct your own research and consider your risk tolerance.
