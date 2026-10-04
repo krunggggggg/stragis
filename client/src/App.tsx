@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "./api";
 import { GoldSection } from "./GoldSection";
+import { BacktestPanel } from "./BacktestPanel";
 import { ResponsiveContainer, ComposedChart, BarChart, Bar, Line, XAxis, YAxis, Tooltip, CartesianGrid, ReferenceLine, AreaChart, Area } from "recharts";
 
 // ---------- indicators ----------
@@ -245,6 +246,8 @@ export function App() {
             <tbody>{(marketsQ.data?.markets || []).slice(0, 15).map(m => <tr key={m.id} onClick={() => { const c = COINS.find(x => x.id === m.id); setSelected(c || { id: m.id, symbol: m.symbol.toUpperCase(), name: m.name }); }} className="cursor-pointer hover:bg-white/5 border-t" style={{ borderColor: "var(--border)" }}><td className="px-4 py-2 font-bold">{m.symbol.toUpperCase()} <span className="font-normal" style={{ color: "var(--dim)" }}>{m.name}</span></td><td className="px-4 py-2 mono">${fmt(m.current_price)}</td><td className="px-4 py-2 mono" style={{ color: (m.price_change_percentage_24h ?? 0) >= 0 ? "var(--green)" : "var(--red)" }}>{fmt(m.price_change_percentage_24h)}%</td><td className="px-4 py-2 mono text-xs">${fmt(m.high_24h)} / ${fmt(m.low_24h)}</td><td className="px-4 py-2 mono text-xs">{fmtBig(m.total_volume)}</td></tr>)}</tbody></table></div>
         </section>
 
+        <BacktestPanel selected={selected} balance={bal} riskPct={rp} />
+
         <div className="grid lg:grid-cols-3 gap-4">
           {/* Watchlist */}
           <section className="rounded-xl p-4" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
@@ -291,6 +294,7 @@ export function App() {
           <h2 className="font-bold text-base">How Stragis Works</h2>
           <p><b>Live data:</b> Prices, 24h high/low, volume and OHLCV candles come live from Binance (primary) with automatic Kraken fallback, and auto-refresh every 30 seconds (LIVE badge + timestamp above). CoinGecko supplies market-cap rankings and search, cached to respect its free rate limit. If all providers are unavailable, Stragis shows LIVE DATA UNAVAILABLE instead of fake prices. Supported: BTC, ETH, SOL, XRP, BNB, DOGE, ADA, AVAX, LINK, DOT and any coin via search.</p>
           <p><b>Signals:</b> BUY / SELL / WAIT is a multi-factor score — price vs 50/200 EMA, 20/50 EMA alignment, RSI, MACD histogram, distance to support/resistance, momentum and volatility (Bollinger width). Uptrend = score ≥ +3, Downtrend = ≤ −3, otherwise Sideways. Every signal lists its reasons, entry zone, stop-loss, take-profits and risk/reward.</p>
+          <p><b>Backtesting:</b> Use the <b>Run Backtest</b> button to test those same rules over the last 3 or 5 days. It uses completed historical candles, a 200-candle warm-up, next-candle-open entries, and SL/TP1 exits. It excludes fees and slippage, so treat it as a rules check — not proof of future profit.</p>
           <p><b>Indicators:</b> EMA 20/50/200, SMA, RSI 14, MACD 12/26/9, Bollinger Bands 20/2, swing support/resistance. <b>Risk:</b> position size = (balance × risk%) ÷ |entry − stop|. <b>Alerts & watchlist</b> persist and are evaluated live.</p>
           <p style={{ color: "var(--dim)" }}>Limitations: Indicators describe the past and present — they cannot predict prices. Exchange feeds reflect that exchange's own trades; prices can differ slightly between exchanges. Always verify on your exchange before trading.</p>
         </section>

@@ -72,14 +72,35 @@ async function binanceCandles(pair: string, tf: string): Promise<CandleV[]> {
   const rows: any[] = await fetchJson(`${BIN}/api/v3/klines?symbol=${pair}&interval=${interval}&limit=${TF_LIMIT[tf] ?? 168}`);
   return rows.map(r => ({ t: Number(r[0]), o: Number(r[1]), h: Number(r[2]), l: Number(r[3]), c: Number(r[4]), v: Number(r[7]) }));
 }
-async function krakenCandles(base: string, tf: string): Promise<CandleV[]> {
+async function krakenCandles(base: string, tf: string, sinceSec?: number): Promise<CandleV[]> {
   const pair = KRAKEN_PAIR[base] || `${base}USD`;
-  const d: any = await fetchJson(`${KRK}/OHLC?pair=${pair}&interval=${KRK_INTERVAL[tf] ?? 60}`);
+  const since = sinceSec ? `&since=${sinceSec}` : "";
+  const d: any = await fetchJson(`${KRK}/OHLC?pair=${pair}&interval=${KRK_INTERVAL[tf] ?? 60}${since}`);
   if (d.error?.length) throw new Error(`Kraken ${d.error[0]}`);
   const key = Object.keys(d.result || {}).find(k => k !== "last");
   if (!key) throw new Error("Kraken OHLC empty");
   return (d.result[key] as any[]).map(r => ({ t: Number(r[0]) * 1000, o: Number(r[1]), h: Number(r[2]), l: Number(r[3]), c: Number(r[4]), v: Number(r[6]) * Number(r[4]) }));
 }
+const TF_MS: Record<string, number> = { "1m": 60_000, "5m": 300_000, "15m": 900_000, "1h": 3_600_000, "4h": 14_400_000, "1d": 86_400_000, "1w": 604_800_000 };
+async function binanceCandlesRange(pair: string, tf: string, startTime: number, endTime: number): Promise<CandleV[]> {
+  const intervalMs = TF_MS[tf] ?? TF_MS["1h"]!;
+  const out: CandleV[] = [];
+  let cursor = startTime;
+  while (cursor <= endTime && out.length < 12_000) {
+    const rows: any[] = await fetchJson(`${BIN}/api/v3/klines?symbol=${pair}&interval=${tf}&startTime=${cursor}&endTime=${endTime}&limit=1000`);
+    if (!Array.isArray(rows) || !rows.length) break;
+    for (const r of rows) {
+      // Exclude the still-forming candle so a backtest only uses completed bars.
+      if (Number(r[6]) < endTime) out.push({ t: Number(r[0]), o: Number(r[1]), h: Number(r[2]), l: Number(r[3]), c: Number(r[4]), v: Number(r[7]) });
+    }
+    const lastOpen = Number(rows[rows.length - 1][0]);
+    if (!Number.isFinite(lastOpen)) break;
+    cursor = lastOpen + intervalMs;
+    if (rows.length < 1000) break;
+  }
+  return out;
+}
+
 const marketSchema = z.object({
   id: z.string(), symbol: z.string(), name: z.string(), image: z.string().nullable().optional(),
   current_price: z.number(), market_cap: z.number().nullable(), total_volume: z.number().nullable(),
@@ -205,6 +226,47 @@ export const Actions = {
         if (!market && !candles.length) throw new Error("CoinGecko returned no data");
         return { ok: true, source: "CoinGecko (fallback)", fetchedAt, error: null, market, candles, prices: prices.length ? prices : candles.map(cd => ({ t: cd.t, p: cd.c, v: cd.v })) };
       } catch (e: any) { return { ok: false, source: "Binance/Kraken/CoinGecko", fetchedAt, error: String(e?.message || e), market: null, candles: [], prices: [] }; }
+    },
+  }),
+  getBacktestData: defineAction({
+    request: z.object({ coinId: z.string(), symbol: z.string().optional(), timeframe: z.string().default("15m"), days: z.number().int().refine(v => v === 3 || v === 5) }),
+    response: z.object({
+      ok: z.boolean(), source: z.string(), fetchedAt: z.string(), error: z.string().nullable(), testStart: z.number().nullable(),
+      candles: z.array(z.object({ t: z.number(), o: z.number(), h: z.number(), l: z.number(), c: z.number(), v: z.number() })),
+    }),
+    async handler(_ctx, args) {
+      const fetchedAt = new Date().toISOString();
+      const tf = TF_MS[args.timeframe] ? args.timeframe : "15m";
+      const intervalMs = TF_MS[tf]!;
+      const base = (args.symbol || KNOWN_BASE[args.coinId] || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+      if (!base) return { ok: false, source: "Binance/Kraken", fetchedAt, error: "Unknown coin symbol for backtesting", testStart: null, candles: [] };
+      const pair = `${base}USDT`;
+      const cacheKey = `backtest:${pair}:${tf}:${args.days}`;
+      try {
+        return await cached(cacheKey, 60_000, async () => {
+          const now = Date.now();
+          const testStart = now - args.days * 86_400_000;
+          const warmupBars = 280;
+          const startTime = testStart - warmupBars * intervalMs;
+          // ---- Primary: Binance historical klines (paginated, completed candles only) ----
+          try {
+            const pairs = await binanceUsdtPairs().catch(() => null);
+            if (pairs && !pairs.has(pair)) throw new Error(`${pair} is not listed on Binance spot`);
+            const candles = await binanceCandlesRange(pair, tf, startTime, now);
+            const warmup = candles.filter(c => c.t < testStart).length;
+            const tested = candles.filter(c => c.t >= testStart).length;
+            if (warmup < 200 || tested < 10) throw new Error(`Insufficient Binance history (warmup ${warmup}, test bars ${tested})`);
+            return { ok: true, source: "Binance (backtest history)", fetchedAt: new Date().toISOString(), error: null, testStart, candles };
+          } catch (binanceErr) {
+            // ---- Fallback: Kraken OHLC (max ~720 candles from 'since') ----
+            const candles = (await krakenCandles(base, tf, Math.floor(startTime / 1000))).filter(c => c.t >= Math.floor(startTime / intervalMs) * intervalMs);
+            const warmup = candles.filter(c => c.t < testStart).length;
+            const tested = candles.filter(c => c.t >= testStart).length;
+            if (warmup < 200 || tested < 10) throw new Error(`Insufficient Kraken history (warmup ${warmup}, test bars ${tested}); Binance error: ${String((binanceErr as any)?.message || binanceErr)}`);
+            return { ok: true, source: "Kraken (backtest fallback)", fetchedAt: new Date().toISOString(), error: null, testStart, candles };
+          }
+        });
+      } catch (e: any) { return { ok: false, source: "Binance/Kraken", fetchedAt, error: String(e?.message || e), testStart: null, candles: [] }; }
     },
   }),
   getGoldData: defineAction({

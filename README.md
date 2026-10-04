@@ -9,6 +9,11 @@ untouched; the conversion lives entirely in this folder.
 
 It contains:
 
+- **Strategy Backtest** — a **Run Backtest** button tests the same fixed
+  crypto signal rules over the last 3 or 5 days at 1m/5m/15m/1h/4h, with a
+  200-candle warm-up, next-candle-open entries, SL/TP1 exits, win rate,
+  net P&L, total R, profit factor, max drawdown, an equity curve, and a
+  trade log. Fees and slippage are not modeled.
 - **Crypto dashboard** — live prices and true per-interval OHLCV candles from
   Binance (primary) with automatic Kraken fallback; CoinGecko supplies
   market-cap rankings/search behind a server cache (60s markets, 5min
@@ -63,6 +68,9 @@ empty on next launch).
   Binance is unreachable on your network — both are working states.
   The chart has true per-timeframe candles (1m–1w) and a volume
   histogram underneath it.
+- **Strategy Backtest**: choose 3 or 5 days and a timeframe, then click
+  **Run Backtest**. It only runs when you click — it does not run
+  automatically on every refresh.
 - **GOLD ONLY tab**: leave the app open on this tab while the gold
   market is open (from Monday). The spot history/candles are built from
   ticks the app records itself, so structure and setups become
