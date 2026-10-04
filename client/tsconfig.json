@@ -1,15 +1,1 @@
-{
-  "extends": "../tsconfig.base.json",
-  "compilerOptions": {
-    "lib": ["ES2022", "DOM"],
-    "jsx": "react-jsx",
-    "types": ["bun-types", "react", "react-dom"],
-    "rootDir": "..",
-    "tsBuildInfoFile": "./.tsbuildinfo.client",
-    "paths": {
-      "@space/server/*": ["../server/src/*"],
-      "@space/privileged": ["../server/.generated/privileged.contract"]
-    }
-  },
-  "include": ["src/**/*", "../server/src/**/*"]
-}
+{"compilerOptions":{"jsx":"react-jsx","lib":["ES2022","DOM"],"rootDir":"..","tsBuildInfoFile":"./.tsbuildinfo.client","types":["react","react-dom"]},"extends":"../tsconfig.base.json","include":["src/**/*","../server/src/**/*","../vite.config.ts"]}
