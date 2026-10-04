@@ -1,0 +1,40 @@
+name: Build Windows EXE
+
+# Builds the portable Stragis.exe on a real Windows runner.
+# Download it from the run's "Stragis-exe" artifact afterwards.
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/desktop-exe
+
+jobs:
+  build-windows-exe:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # npm (not bun) for Windows reliability. `npm install` is used
+      # (not `npm ci`) so no committed lockfile is required.
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build client + server
+        run: npm run build
+
+      - name: Package portable Windows .exe
+        run: npx electron-builder --win portable
+
+      - name: Upload Stragis.exe
+        uses: actions/upload-artifact@v4
+        with:
+          name: Stragis-exe
+          path: dist-exe/*.exe
+          if-no-files-found: error
