@@ -38,7 +38,7 @@ export function BacktestPanel({ selected, balance, riskPct }: { selected: Coin; 
   }, [run, q.data, accountBalance, accountRisk]);
 
   const equityData = useMemo(() => (result?.equity || []).map(p => ({ time: fmtDateTime(p.t), balance: Number(p.balance.toFixed(2)) })), [result]);
-  const stale = !!run && (run.coinId !== selected.id);
+  const stale = !!run && (run.coinId !== selected.id || run.days !== days || run.timeframe !== timeframe);
   const metric = "rounded-lg p-3";
   const metricLabel = "text-[10px] font-bold tracking-wider";
   const metricValue = "mono text-lg font-black mt-1";
@@ -59,7 +59,7 @@ export function BacktestPanel({ selected, balance, riskPct }: { selected: Coin; 
           className="px-5 py-2.5 rounded-lg text-sm font-black text-black disabled:opacity-50"
           style={{ background: "var(--green)" }}
         >
-          {q.isFetching ? "Running…" : "▶ Run Backtest"}
+          {q.isFetching ? "Running…" : `▶ Run Backtest — ${days} Days · ${timeframe}`}
         </button>
       </div>
 
@@ -83,7 +83,7 @@ export function BacktestPanel({ selected, balance, riskPct }: { selected: Coin; 
       {q.isFetching && <p className="text-sm mt-4" style={{ color: "var(--dim)" }}>Loading completed historical candles and running the simulation…</p>}
       {run && q.data && !q.data.ok && <div className="rounded-lg p-3 mt-4 text-sm font-bold" style={{ background: "#2e0a0a", color: "var(--red)", border: "1px solid var(--red)" }}>Backtest data unavailable: {q.data.error || "the providers returned no usable history"}. No results were invented.</div>}
       {q.isError && <div className="rounded-lg p-3 mt-4 text-sm font-bold" style={{ background: "#2e0a0a", color: "var(--red)", border: "1px solid var(--red)" }}>Backtest request failed. Please try again.</div>}
-      {stale && run && <p className="text-xs mt-3" style={{ color: "var(--amber)" }}>The results below are for {run.symbol}; you are now viewing {selected.symbol}. Run the backtest again to test {selected.symbol}.</p>}
+      {stale && run && <div className="rounded-lg p-3 mt-4 text-sm font-bold" style={{ background: "#2a2000", color: "var(--amber)", border: "1px solid var(--amber)" }}>⚠ Settings changed — the results below are still the previous run ({run.symbol} · {run.days} days · {run.timeframe}). Click <b>Run Backtest</b> to update them for {selected.symbol} · {days} days · {timeframe}.</div>}
 
       {result && q.data?.ok && (
         <div className="mt-4 space-y-4">
