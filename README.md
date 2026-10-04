@@ -21,3 +21,5 @@ React + TypeScript client (`client/`), server actions (`server/src/actions.ts`),
 ## Disclaimer
 
 Stragis provides market analysis and educational information based on available market data. Trading cryptocurrency and gold involves substantial risk, and past performance does not guarantee future results. Signals are not guaranteed predictions or financial advice. Always conduct your own research and consider your risk tolerance.
+
+<!-- Discord webhook test: 2026-10-04 17:35 CST -->
